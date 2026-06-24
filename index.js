@@ -91,36 +91,49 @@ do {
 
 function createHero() {
 
-    alert("Você tem 150 pontos de atributos para uso!");
-
-    const hero = {
-        heroName: prompt("Nome do herói: "),
-        heroPower: Number(prompt("Força do herói: ")),
-        heroDefense: Number(prompt("Defesa do herói: ")),
-        heroHealth: Number(prompt("Vida do herói: "))
-    };
-
-    if (hero.heroName === "") {
-        alert("Você não informou um nome para seu herói!");
-        return createHero();
-    }
-
-    const atributosDisponiveis = 150
-    const atributosDoHeroi = hero.heroPower + hero.heroDefense + hero.heroHealth
-    if (atributosDoHeroi > atributosDisponiveis) {
-        alert("Atributos inválidos! Você tem apenas 150 pontos de atributos");
-        createHero();
+    if (heroes.length === 3) {
+        alert("Limite máximo de heróis atingido(3)!");
         return;
     }
 
-    if (heroes.length === 3) {
-        alert("Limite máximo de heróis atingido(3)!");
-        return menuOptions;
+    while (true) {
+
+        alert("Você tem 150 pontos de atributos para uso!");
+
+        const hero = {
+            heroName: prompt("Nome do herói: "),
+            heroPower: Number(prompt("Força do herói: ")),
+            heroDefense: Number(prompt("Defesa do herói: ")),
+            heroHealth: Number(prompt("Vida do herói: "))
+        };
+
+        if (hero.heroName === "") {
+            alert("Você não informou um nome para seu herói!");
+            continue;
+        }
+
+        const atributosDoHeroi =
+            hero.heroPower +
+            hero.heroDefense +
+            hero.heroHealth;
+
+        if (atributosDoHeroi > 150) {
+            alert("Atributos inválidos! Você tem apenas 150 pontos de atributos");
+            continue;
+        }
+
+        if(
+           Number.isNaN(hero.heroHealth) ||
+           Number.isNaN(hero.heroPower) ||
+           Number.isNaN(hero.heroDefense)
+        ) {
+            console.log("Insira apenas números nos atributos!");
+            continue;
+        }
+
+        heroes.push(hero);
+        return heroes;
     }
-
-    heroes.push(hero);
-
-    return heroes;
 }
 
 function heroesList() {
@@ -180,7 +193,7 @@ function choseChampion() {
 
     let menu = "";
 
-    for(let i = 0; i < classes.length; i++) {
+    for (let i = 0; i < classes.length; i++) {
         menu += `${i + 1} - ${classes[i]}\n`;
     }
 
