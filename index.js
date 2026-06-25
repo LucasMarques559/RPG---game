@@ -122,12 +122,12 @@ function createHero() {
             continue;
         }
 
-        if(
-           Number.isNaN(hero.heroHealth) ||
-           Number.isNaN(hero.heroPower) ||
-           Number.isNaN(hero.heroDefense)
+        if (
+            Number.isNaN(hero.heroHealth) ||
+            Number.isNaN(hero.heroPower) ||
+            Number.isNaN(hero.heroDefense)
         ) {
-            console.log("Insira apenas números nos atributos!");
+            alert("Insira apenas números nos atributos!");
             continue;
         }
 
@@ -189,6 +189,8 @@ function choseChampion() {
     // tem duas formas de obter as propriedades de um objeto
     // for in e object.keys
 
+    alert("Só é permitido selecionar 1 campeão!");
+
     const classes = Object.keys(heroClasses);
 
     let menu = "";
@@ -201,7 +203,7 @@ function choseChampion() {
 
     const chosedClass = classes[option - 1];
 
-    heroesChosed.push(heroClasses[chosedClass]);
+    heroesChosed[0] = heroClasses[chosedClass];
 
     console.log(chosedClass);
 }
