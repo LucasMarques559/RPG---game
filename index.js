@@ -76,11 +76,10 @@ do {
             break;
 
         case 4:
-            if (heroes.length === 0) {
-                alert("Você ainda não criou/escolheu seu herói!");
-                createHero();
+            if (heroes.length === 0 && heroesChosed.length === 0) {
+                alert("Você não criou/selecionou seu campeão!");
             }
-            heroOpponent();
+            heroBattle();
             break;
 
         default:
@@ -220,40 +219,49 @@ function heroOpponent() {
 
     alert(`Seu oponente será o ${randomclass}!`);
 
+    return champion;
+
+}
+
+function heroBattle() {
+
+    const opponent = heroOpponent();
+    const player = heroes[0];
+
     battleOptions = Number(prompt(
         "1 - Atacar" +
         "\n2 - Defender" +
         "\n3 - Esquivar" +
-        "\n0 - Habilidade Especial"
+        "\n4 - Habilidade Especial"
     ));
-}
 
-switch (battleOptions) {
-    case 1:
-        // Quando eu escolher atacar, quero que a vida do bot diminua de acordo com o meu dano
-        // variavel da vida do bot
-        // subtrair com a minha força
-        // atualizar a variavel para esse valor final ( vida - minhaForça )
-        champion.heroHealth -= heroes[0].heroPower;
-        break;
+    switch (battleOptions) {
+        case 1:
+            // ataque
+            opponent.heroHealth -= player.heroPower;
+            alert(`Oponente atingido! 
+                \nDano causado: ${player.heroPower}
+                \nVida do oponente:${opponent.heroHealth}`);
+            break;
 
-    case 2:
-        // Se eu escolher defender na hora certa, ou seja, se eu defender na mesma hora que o bot escolher atacar = metade do dano
-        heroes[0].heroDefense -= (champion.heroPower / 2);
-        break;
+        case 2:
+            // defender
+            break;
 
-    // case 3:
-    //     // Esquivar seria como o "rolar" dos soulslike, fico imune ao ataque (mas apenas aos ataques padrões, habilidades não são possíveis esquivar)
-    //     // Mesma lógica, se eu esquivar na hora certa = anula o ataque
-    //     // Função de ataque do bot -> if(option === 3) heroPower = null
+        case 3:
+            // esquivar
+            break;
 
-    case 0:
-        alert("É necessário escolher uma das classes heróicas!");
-        break;
+        case 4:
+            // habilidade especial
+            break;
 
-    default:
-        console.log("Nenhuma função encontrada");
-        break;
+        default:
+            // caso o usuário digite algo que não está nas opções => "Opção inválida"
+            break;
+    }
+
+
 }
 
 // for eu sei quantas vezes será necessário executar o código, é definido

@@ -1,7 +1,7 @@
 // Identificação de falta de funcionalidades //
 
-1° Ao selecionar um herói já existente não deixar selecionar outro
-2° Quando eu clico em batalhar (mesmo com um herói já selecionado) fala pra criar um herói
+1° Ao selecionar um herói já existente não deixar selecionar outro ✅
+2° Quando eu clico em batalhar (mesmo com um herói já selecionado) fala pra criar um herói ✅
 3° As funções de batalha (tanto dos bots quanto dos players)
 
 // Identificação de problemas //
@@ -9,3 +9,4 @@
 1° Quando seleciona um herói, ao imprimi-lo não aparece seu nome e sim o índice da array
 2° Quando imprimo os heróis no console.log, imprime várias vezes
 3° No menu de seleções de heróis, erro ao colocar um número que não existe na array
+4° Na lista de seleção de heróis, aparece undefined quando eu seleciono um número que não está lá.
