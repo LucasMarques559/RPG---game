@@ -6,7 +6,7 @@
 
 // Identificação de problemas //
 
-1° Quando seleciona um herói, ao imprimi-lo não aparece seu nome e sim o índice da array
+1° Quando seleciona um herói, ao imprimi-lo não aparece seu nome e sim o índice da array ✅
 2° Quando imprimo os heróis no console.log, imprime várias vezes
 3° No menu de seleções de heróis, erro ao colocar um número que não existe na array
 4° Na lista de seleção de heróis, aparece undefined quando eu seleciono um número que não está lá.

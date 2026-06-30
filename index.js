@@ -1,6 +1,7 @@
 let menuOptions;
 let battleOptions;
 let herosOptions;
+let heroClassName = null;
 
 const heroes = [];
 const heroesChosed = [];
@@ -151,7 +152,7 @@ function listHeroesChosed() {
     let text = "";
 
     for (const classe in heroesChosed) {
-        text += `\n=== ${classe.toUpperCase()} ===\n`;
+        text += `\n=== ${heroClassName.toUpperCase()} ===\n`;
         for (const atributo in heroesChosed[classe]) {
             text += `${atributo}: ${heroesChosed[classe][atributo]}\n`
         }
@@ -202,6 +203,8 @@ function choseChampion() {
     const option = Number(prompt(menu));
 
     const chosedClass = classes[option - 1];
+
+    heroClassName = chosedClass;
 
     heroesChosed[0] = heroClasses[chosedClass];
 
