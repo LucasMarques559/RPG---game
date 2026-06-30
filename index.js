@@ -78,6 +78,7 @@ do {
         case 4:
             if (heroes.length === 0 && heroesChosed.length === 0) {
                 alert("Você não criou/selecionou seu campeão!");
+                createHero();
             }
             heroBattle();
             break;
@@ -90,9 +91,9 @@ do {
 
 function createHero() {
 
-    if (heroes.length === 3) {
-        alert("Limite máximo de heróis atingido(3)!");
-        return;
+    if (heroes.length > 0) {
+        alert("Limite máximo de heróis atingido(1)!");
+        alert(" O herói atual sera substituído.");
     }
 
     while (true) {
@@ -130,8 +131,8 @@ function createHero() {
             continue;
         }
 
-        heroes.push(hero);
-        return heroes;
+        heroes[0] = hero;
+        return;
     }
 }
 
@@ -173,7 +174,7 @@ function showClasses() {
         // armazeno essas classes dentro da variável text
         text += `\n=== ${classe.toUpperCase()} ===\n`;
 
-        // no segundo for in eu percorro todas as propriedades das classes, ou seja, atributos em heroClasses["mago"] = vida, ataque...
+        // no segundo for in eu percorro todas as propriedades das classes predefinidas, ou seja, atributos em heroClasses["mago"] = vida, ataque...
         // ${atributo} -> vida: ${heroClasses[classe][atributo] -> 100
         for (const atributo in heroClasses[classe]) {
             text += `${atributo}: ${heroClasses[classe][atributo]}\n`;
