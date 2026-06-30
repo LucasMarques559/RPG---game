@@ -238,22 +238,31 @@ function heroBattle() {
     switch (battleOptions) {
         case 1:
             // ataque
-            opponent.heroHealth -= player.heroPower;
-            alert(`Oponente atingido! 
+            opponent.heroDefense -= player.heroPower;
+            alert(`Oponente atingido!
+                \nDano causado: ${player.heroPower}
+                \nDefesa do oponente: ${opponent.heroDefense}`);
+            if (opponent.heroDefense === 0) {
+                opponent.heroHealth -= player.heroPower;
+                alert(`Oponente atingido! 
                 \nDano causado: ${player.heroPower}
                 \nVida do oponente:${opponent.heroHealth}`);
+            }
             break;
 
         case 2:
             // defender
+            player.heroDefense -= (opponent.heroPower / 2);
             break;
 
         case 3:
             // esquivar
+
             break;
 
         case 4:
             // habilidade especial
+
             break;
 
         default:
