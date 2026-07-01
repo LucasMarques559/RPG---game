@@ -10,3 +10,5 @@
 2° Quando imprimo os heróis no console.log, imprime várias vezes
 3° No menu de seleções de heróis, erro ao colocar um número que não existe na array
 4° Na lista de seleção de heróis, aparece undefined quando eu seleciono um número que não está lá.
+5° Quando eu realizo alguma função na batalha (atacar, esquivar...), volta pro menu principal.
+6° Não consigo batalhar com personagens escolhidos

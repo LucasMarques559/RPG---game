@@ -209,6 +209,8 @@ function choseChampion() {
     heroesChosed[0] = heroClasses[chosedClass];
 
     console.log(chosedClass);
+
+    return chosedClass;
 }
 
 function heroOpponent() {
@@ -232,48 +234,46 @@ function heroBattle() {
     const opponent = heroOpponent();
     const player = heroes[0];
 
-    battleOptions = Number(prompt(
-        "1 - Atacar" +
-        "\n2 - Defender" +
-        "\n3 - Esquivar" +
-        "\n4 - Habilidade Especial"
-    ));
+    do {
+        battleOptions = Number(prompt(
+            "1 - Atacar" +
+            "\n2 - Defender" +
+            "\n3 - Esquivar" +
+            "\n4 - Habilidade Especial"
+        ));
 
-    switch (battleOptions) {
-        case 1:
-            // ataque
-            opponent.heroDefense -= player.heroPower;
-            alert(`Oponente atingido!
+        switch (battleOptions) {
+            case 1:
+                // ataque
+                opponent.heroDefense = Math.max(0, opponent.heroDefense - player.heroPower);
+                alert(`Oponente atingido!
                 \nDano causado: ${player.heroPower}
                 \nDefesa do oponente: ${opponent.heroDefense}`);
-            if (opponent.heroDefense === 0) {
-                opponent.heroHealth -= player.heroPower;
-                alert(`Oponente atingido! 
-                \nDano causado: ${player.heroPower}
-                \nVida do oponente:${opponent.heroHealth}`);
-            }
-            break;
+                if (opponent.heroDefense === 0)
+                    alert("A defesa do oponente foi quebrada!");
+                //console.log("A defesa do oponente foi quebrada!");
+                break;
 
-        case 2:
-            // defender
-            player.heroDefense -= (opponent.heroPower / 2);
-            break;
+            case 2:
+                // defender
+                player.heroDefense -= (opponent.heroPower / 2);
+                break;
 
-        case 3:
-            // esquivar
+            case 3:
+                // esquivar
 
-            break;
+                break;
 
-        case 4:
-            // habilidade especial
+            case 4:
+                // habilidade especial
 
-            break;
+                break;
 
-        default:
-            // caso o usuário digite algo que não está nas opções => "Opção inválida"
-            break;
-    }
-
+            default:
+                // caso o usuário digite algo que não está nas opções => "Opção inválida"
+                break;
+        }
+    } while (battleOptions !== 0)
 
 }
 
