@@ -10,8 +10,7 @@ const heroClasses = {
         heroPower: 10,
         heroDefense: 25,
         heroHealth: 57,
-        mana: 89,
-        spell: 80
+        special_skill: 80
     },
 
     tanque: {
@@ -215,67 +214,73 @@ function choseChampion() {
 
 function heroOpponent() {
 
+    // variável contendo um array de strings (mago, soldado...)
     const classes = Object.keys(heroClasses);
 
     // classes[0], classes[1]... classes retorna as chaves do objeto: mago, tanque e etc... 
     // dessa forma usasse o índice para selecionar uma classe aleatória
     const randomclass = classes[Math.floor(Math.random() * classes.length)];
 
-    const champion = heroClasses[randomclass];
-
     alert(`Seu oponente será o ${randomclass}!`);
 
-    return champion;
-
+    // retornando dois objetos
+    return {
+        champion: heroClasses[randomclass], // atributos da variável sorteada
+        className: randomclass // nome da variável sorteada
+    };
 }
+
 
 function heroBattle() {
 
     const opponent = heroOpponent();
+
     const player = heroes[0];
 
-    do {
-        battleOptions = Number(prompt(
-            "1 - Atacar" +
-            "\n2 - Defender" +
-            "\n3 - Esquivar" +
-            "\n4 - Habilidade Especial"
-        ));
 
-        switch (battleOptions) {
-            case 1:
-                // ataque
-                opponent.heroDefense = Math.max(0, opponent.heroDefense - player.heroPower);
-                alert(`Oponente atingido!
+    battleOptions = Number(prompt(
+        "1 - Atacar" +
+        "\n2 - Defender" +
+        "\n3 - Esquivar" +
+        "\n4 - Habilidade Especial"
+    ));
+
+    switch (battleOptions) {
+        case 1:
+            // ataque
+            opponent.heroDefense = Math.max(0, opponent.heroDefense - player.heroPower);
+            alert(`Oponente atingido!
                 \nDano causado: ${player.heroPower}
                 \nDefesa do oponente: ${opponent.heroDefense}`);
-                if (opponent.heroDefense === 0)
-                    alert("A defesa do oponente foi quebrada!");
-                //console.log("A defesa do oponente foi quebrada!");
-                break;
+            if (opponent.heroDefense === 0)
+                alert("A defesa do oponente foi quebrada!");
+            //console.log("A defesa do oponente foi quebrada!");
+            break;
 
-            case 2:
-                // defender
-                player.heroDefense -= (opponent.heroPower / 2);
-                break;
+        case 2:
+            // defender
+            // colocar uma condição if, se o ataque do bot for o ataque padrão
+            player.heroDefense -= (opponent.heroPower / 2);
+            alert(`O ${opponent.className} atacou!
+                \nDano causado: ${player.heroDefense}`);
+            break;
 
-            case 3:
-                // esquivar
+        case 3:
+            // esquivar
 
-                break;
+            break;
 
-            case 4:
-                // habilidade especial
+        case 4:
+            // habilidade especial
 
-                break;
+            break;
 
-            default:
-                // caso o usuário digite algo que não está nas opções => "Opção inválida"
-                break;
-        }
-    } while (battleOptions !== 0)
-
+        default:
+            // caso o usuário digite algo que não está nas opções => "Opção inválida"
+            break;
+    }
 }
+
 
 // for eu sei quantas vezes será necessário executar o código, é definido
 // while uma condição de repetição fixa, acontece isso ( expressão ) quando a condição for ( true )
