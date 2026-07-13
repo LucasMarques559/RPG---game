@@ -17,28 +17,28 @@ const heroClasses = {
         heroPower: 20,
         heroDefense: 95,
         heroHealth: 74,
-        shield: 120
+        special_skill: 40
     },
 
     soldado: {
         heroPower: 27,
         heroDefense: 35,
         heroHealth: 55,
-        vigor: 60
+        special_skill: 54
     },
 
     assassino: {
         heroPower: 11,
         heroDefense: 14,
         heroHealth: 20,
-        furtividade: 250
+        special_skill: 250
     },
 
     miseravel: {
         heroPower: 1,
         heroDefense: 1,
         heroHealth: 1,
-        skill: "???"
+        special_skill: 1000
     },
 
     necromante: {
@@ -197,6 +197,11 @@ function choseChampion() {
 
     for (let i = 0; i < classes.length; i++) {
         menu += `${i + 1} - ${classes[i]}\n`;
+
+        if (isNaN.option) {
+            console.log("Informe o herói de acordo com sua numeração!");
+            continue;
+        }
     }
 
     const option = Number(prompt(menu));

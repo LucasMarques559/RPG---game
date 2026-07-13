@@ -12,3 +12,4 @@
 4° Na lista de seleção de heróis, aparece undefined quando eu seleciono um número que não está lá.
 5° Quando eu realizo alguma função na batalha (atacar, esquivar...), volta pro menu principal.
 6° Não consigo batalhar com personagens escolhidos
+7° Na seleção de personagens já pré prontos, se eu colocar um número que não tem na lista = undefined
